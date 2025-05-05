@@ -1,12 +1,83 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useState } from 'react';
+import Header from '@/components/Header';
+import UploadForm from '@/components/UploadForm';
+import ResultsView from '@/components/ResultsView';
+import LegalGlossary from '@/components/LegalGlossary';
+import { processDocument, ProcessedDocument } from '@/services/documentService';
+import { toast } from 'sonner';
 
 const Index = () => {
+  const [activeView, setActiveView] = useState<string>('upload');
+  const [isLoading, setIsLoading] = useState(false);
+  const [documentName, setDocumentName] = useState('');
+  const [originalText, setOriginalText] = useState('');
+  const [processedResult, setProcessedResult] = useState<ProcessedDocument | null>(null);
+
+  const handleProcessDocument = async (text: string, name: string) => {
+    try {
+      setIsLoading(true);
+      setOriginalText(text);
+      setDocumentName(name);
+      
+      // Call the service to process the document
+      const result = await processDocument(text);
+      setProcessedResult(result);
+      
+      // Switch to results view
+      setActiveView('results');
+      toast.success('Document successfully processed');
+    } catch (error) {
+      console.error('Error processing document:', error);
+      toast.error('Failed to process document. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleReset = () => {
+    setActiveView('upload');
+    setOriginalText('');
+    setDocumentName('');
+    setProcessedResult(null);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Header activeView={activeView} setActiveView={setActiveView} />
+      
+      <main className="flex-grow">
+        {activeView === 'upload' ? (
+          <UploadForm 
+            onProcessDocument={handleProcessDocument}
+            isLoading={isLoading}
+          />
+        ) : (
+          processedResult && (
+            <ResultsView
+              documentName={documentName}
+              originalText={originalText}
+              simplifiedText={processedResult.simplifiedText}
+              confusingClauses={processedResult.confusingClauses}
+              suggestedQuestions={processedResult.suggestedQuestions}
+              onReset={handleReset}
+            />
+          )
+        )}
+      </main>
+      
+      <footer className="bg-white border-t border-gray-200 py-4">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+          <div className="flex items-center mb-2 md:mb-0">
+            <span className="text-sm text-gray-500">© {new Date().getFullYear()} SpeakLegal</span>
+          </div>
+          <div className="flex items-center space-x-4">
+            <LegalGlossary />
+            <a href="#" className="text-sm text-legal-primary hover:text-legal-accent">Privacy Policy</a>
+            <a href="#" className="text-sm text-legal-primary hover:text-legal-accent">Terms of Use</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
