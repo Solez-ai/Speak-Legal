@@ -68,12 +68,12 @@ const Index = () => {
         )}
       </main>
       
-      <footer className="bg-card border-t border-border py-4 transition-colors">
+      <footer className="bg-gradient-to-r from-legal-primary/10 to-legal-primary/20 border-t-2 border-legal-primary/30 py-6 shadow-lg transition-colors">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center mb-2 md:mb-0">
-            <span className="text-sm text-muted-foreground">© {new Date().getFullYear()} SpeakLegal</span>
+          <div className="flex items-center mb-4 md:mb-0">
+            <span className="text-sm font-medium text-legal-primary">© {new Date().getFullYear()} SpeakLegal</span>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6">
             <LegalGlossary />
             <PrivacyPolicyDialog />
             <TermsOfUseDialog />
