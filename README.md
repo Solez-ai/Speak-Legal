@@ -1,73 +1,57 @@
-# Welcome to your Lovable project
+# SpeakLegal
 
-## Project info
+**SpeakLegal** is an AI-powered legal document assistant that simplifies complex contracts, highlights risky clauses, and helps users understand legal jargon effortlessly. Built for both everyday users and professionals, SpeakLegal turns overwhelming legal text into something readable, relatable, and useful — in seconds.
 
-**URL**: https://lovable.dev/projects/2884543e-1bb4-4968-b99b-dea76a173e96
+---
 
-## How can I edit this code?
+## ✨ Features
 
-There are several ways of editing your application.
+- 📄 **AI-Powered Legal Simplification**  
+  Upload any legal document and receive a human-friendly summary.
 
-**Use Lovable**
+- ❓ **Smart Question Suggestions**  
+  Automatically generates questions you might want to ask about the content.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2884543e-1bb4-4968-b99b-dea76a173e96) and start prompting.
+- 🔍 **Clause-by-Clause Explanations**  
+  Tap on any clause to get a clear, simplified explanation.
 
-Changes made via Lovable will be committed automatically to this repo.
+- 🚩 **Risk Detection & Highlighting**  
+  Flags tricky clauses like auto-renewals, liability waivers, and arbitration terms.
 
-**Use your preferred IDE**
+- 🧠 **Plain-Language Legal Glossary**  
+  Tap on difficult legal terms to get short, easy-to-understand definitions.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- 🗂️ **Document History and Notes**  
+  Save and review past uploads, add personal notes, and compare changes.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- 🎧 **Voice Playback (TTS)**  
+  Listen to summaries read aloud for accessibility or on-the-go review.
 
-Follow these steps:
+- 🌓 **Light & Dark Mode**  
+  Switch between modes for comfortable reading at any time of day.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🛠️ Tech Stack
 
-# Step 3: Install the necessary dependencies.
-npm i
+- ⚡ [Vite](https://vitejs.dev/)
+- 🛡️ TypeScript
+- ⚛️ React
+- 🎨 [shadcn/ui](https://ui.shadcn.com/)
+- 🌈 Tailwind CSS
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## 👨‍💻 Developers
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Samin Yeasar**  
+- **Md Adil Al Alim Cishti**
 
-**Use GitHub Codespaces**
+For inquiries, contact us at: **sheditzofficial918@gmail.com** or **adilalalim2008@gmail.com**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## ⚠️ Disclaimer
 
-This project is built with:
+SpeakLegal is **not a law firm** and does **not provide legal advice**. All AI-generated summaries and suggestions are for **informational purposes only**. For any legal decisions, please consult a qualified legal professional.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2884543e-1bb4-4968-b99b-dea76a173e96) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
