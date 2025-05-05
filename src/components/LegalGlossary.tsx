@@ -110,14 +110,14 @@ const LegalGlossary = () => {
             <div className="space-y-4">
               {filteredTerms.length > 0 ? (
                 filteredTerms.map((item, index) => (
-                  <div key={index} className="border-b border-gray-200 pb-3 last:border-0">
+                  <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-3 last:border-0">
                     <h4 className="font-medium text-legal-primary">{item.term}</h4>
-                    <p className="text-sm text-gray-600 mt-1">{item.definition}</p>
+                    <p className="text-sm text-foreground dark:text-foreground mt-1">{item.definition}</p>
                   </div>
                 ))
               ) : (
                 <div className="text-center py-10">
-                  <p className="text-gray-500">No terms found matching "{searchTerm}"</p>
+                  <p className="text-foreground/70 dark:text-foreground">No terms found matching "{searchTerm}"</p>
                 </div>
               )}
             </div>

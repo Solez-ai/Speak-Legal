@@ -16,14 +16,14 @@ const ThemeSwitcher = () => {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="relative overflow-hidden rounded-full transition-all duration-300 hover:bg-accent/20"
+      className="relative overflow-hidden rounded-full transition-all duration-500 hover:bg-accent/30 hover:scale-105"
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
       <div className="relative flex h-[1.2rem] w-[1.2rem] items-center justify-center">
         <Palette 
-          className={`h-5 w-5 transition-all duration-500 ${
+          className={`h-5 w-5 transition-all duration-700 ${
             theme === 'dark' 
-              ? 'rotate-90 text-primary' 
+              ? 'rotate-90 text-primary animate-pulse-opacity' 
               : 'rotate-0 text-primary'
           }`} 
         />
@@ -31,9 +31,9 @@ const ThemeSwitcher = () => {
       <span className="sr-only">Toggle theme</span>
       
       {/* Enhanced color palette dots animation */}
-      <span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-primary animate-pulse-opacity" />
-      <span className="absolute -bottom-1 -left-1 h-2 w-2 rounded-full bg-destructive animate-pulse-opacity delay-100" />
-      <span className="absolute top-1 -left-1 h-1.5 w-1.5 rounded-full bg-accent animate-pulse-opacity delay-200" />
+      <span className={`absolute -right-1 -top-1 h-2 w-2 rounded-full ${theme === 'dark' ? 'bg-white' : 'bg-primary'} animate-pulse-opacity`} />
+      <span className={`absolute -bottom-1 -left-1 h-2 w-2 rounded-full ${theme === 'dark' ? 'bg-red-400' : 'bg-destructive'} animate-pulse-opacity delay-100`} />
+      <span className={`absolute top-1 -left-1 h-1.5 w-1.5 rounded-full ${theme === 'dark' ? 'bg-blue-400' : 'bg-accent'} animate-pulse-opacity delay-200`} />
     </Button>
   );
 };
