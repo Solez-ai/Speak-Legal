@@ -21,11 +21,8 @@
 - 🧠 **Plain-Language Legal Glossary**  
   Tap on difficult legal terms to get short, easy-to-understand definitions.
 
-- 🗂️ **Document History and Notes**  
-  Save and review past uploads, add personal notes, and compare changes.
-
-- 🎧 **Voice Playback (TTS)**  
-  Listen to summaries read aloud for accessibility or on-the-go review.
+- 🗂️ **Document**  
+  Download The Ones You Like Directly as .txt from our Website
 
 - 🌓 **Light & Dark Mode**  
   Switch between modes for comfortable reading at any time of day.
