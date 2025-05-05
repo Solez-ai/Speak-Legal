@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from 'sonner';
-import { getGeminiApiKey, isGeminiApiKeySet } from '@/services/geminiService';
+import { getGeminiApiKey, isGeminiApiKeySet, setGeminiApiKey } from '@/services/geminiService';
 import ApiKeyInput from '@/components/ApiKeyInput';
 import FileUploadArea from '@/components/FileUploadArea';
 import TextInputArea from '@/components/TextInputArea';
