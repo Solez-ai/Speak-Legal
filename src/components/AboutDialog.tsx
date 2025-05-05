@@ -1,20 +1,10 @@
-
 import React from 'react';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail } from 'lucide-react';
-
 const AboutDialog = () => {
-  return (
-    <Dialog>
+  return <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" className="ml-auto">About</Button>
       </DialogTrigger>
@@ -80,8 +70,9 @@ const AboutDialog = () => {
               
               <Card>
                 <CardHeader>
-                  <CardTitle>Adil</CardTitle>
-                  <CardDescription>Class 7 | BMARPC</CardDescription>
+                  <CardTitle>Md Adil Al Alim Cishti</CardTitle>
+                  <CardDescription>class 10 | GLAB
+                </CardDescription>
                 </CardHeader>
                 <CardFooter>
                   <div className="flex items-center text-sm text-gray-500">
@@ -94,8 +85,6 @@ const AboutDialog = () => {
           </div>
         </div>
       </DialogContent>
-    </Dialog>
-  );
+    </Dialog>;
 };
-
 export default AboutDialog;
