@@ -31,15 +31,15 @@ const ApiKeyInput: React.FC<ApiKeyInputProps> = ({ apiKey, setApiKey, onSave }) 
   };
 
   return (
-    <div className="mb-6 p-4 border rounded-lg bg-gray-50">
-      <h3 className="text-lg font-medium mb-2">API Key Required</h3>
-      <p className="text-gray-600 mb-4">
+    <div className="mb-6 p-4 border rounded-lg dark:border-border bg-gray-50 dark:bg-card shadow-sm dark:shadow-md">
+      <h3 className="text-lg font-medium mb-2 text-foreground">API Key Required</h3>
+      <p className="text-foreground/80 dark:text-foreground/90 mb-4">
         Enter your Gemini API key to process documents. You can get one from{' '}
         <a 
           href="https://ai.google.dev/" 
           target="_blank" 
           rel="noreferrer" 
-          className="text-blue-500 underline"
+          className="text-legal-primary hover:underline transition-all duration-300"
         >
           Google AI Studio
         </a>
@@ -47,18 +47,23 @@ const ApiKeyInput: React.FC<ApiKeyInputProps> = ({ apiKey, setApiKey, onSave }) 
       </p>
       <div className="flex flex-col space-y-4">
         <div>
-          <Label htmlFor="api-key">Gemini API Key</Label>
+          <Label htmlFor="api-key" className="text-foreground">Gemini API Key</Label>
           <Input 
             id="api-key" 
             type="password" 
             value={apiKey} 
             onChange={handleApiKeyChange} 
             placeholder="Enter your Gemini API key"
-            className="mt-1"
+            className="mt-1 border-input dark:border-input/80 text-foreground bg-background dark:bg-background/80"
           />
         </div>
         <div className="flex justify-end">
-          <Button onClick={handleApiKeySubmit}>Save API Key</Button>
+          <Button 
+            onClick={handleApiKeySubmit}
+            className="bg-legal-primary hover:bg-legal-primary/90 text-white dark:text-white rounded-full btn-modern"
+          >
+            Save API Key
+          </Button>
         </div>
       </div>
     </div>
