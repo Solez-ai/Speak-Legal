@@ -51,12 +51,12 @@ const ResultsView: React.FC<ResultsViewProps> = ({
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8">
-      <div className="bg-white rounded-lg shadow-md border border-gray-100">
-        <div className="p-6 border-b">
+      <div className="bg-card rounded-lg shadow-md border border-border transition-colors">
+        <div className="p-6 border-b border-border">
           <div className="flex justify-between items-start mb-4">
             <div>
               <h2 className="text-2xl font-semibold text-legal-primary">{documentName}</h2>
-              <p className="text-gray-500 text-sm">Simplified document results</p>
+              <p className="text-muted-foreground text-sm">Simplified document results</p>
             </div>
             <div className="flex space-x-2">
               <Button variant="outline" size="sm" onClick={handleExport}>
@@ -80,7 +80,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({
               <TabsTrigger value="confusing">
                 Confusing Clauses
                 {confusingClauses.length > 0 && (
-                  <span className="ml-2 bg-legal-accent text-white text-xs py-0.5 px-2 rounded-full">
+                  <span className="ml-2 bg-legal-accent/20 text-accent-foreground text-xs py-0.5 px-2 rounded-full">
                     {confusingClauses.length}
                   </span>
                 )}
@@ -88,7 +88,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({
               <TabsTrigger value="questions">
                 Questions
                 {suggestedQuestions.length > 0 && (
-                  <span className="ml-2 bg-legal-accent text-white text-xs py-0.5 px-2 rounded-full">
+                  <span className="ml-2 bg-legal-accent/20 text-accent-foreground text-xs py-0.5 px-2 rounded-full">
                     {suggestedQuestions.length}
                   </span>
                 )}
@@ -98,14 +98,14 @@ const ResultsView: React.FC<ResultsViewProps> = ({
             <TabsContent value="simplified" className="mt-4">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-2">Original Text</h3>
-                  <div className="bg-gray-50 p-4 rounded border border-gray-200 h-[400px] overflow-y-auto">
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Original Text</h3>
+                  <div className="bg-muted/30 p-4 rounded border border-border h-[400px] overflow-y-auto">
                     <pre className="whitespace-pre-wrap text-sm">{originalText}</pre>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-2">Simplified Text</h3>
-                  <div className="bg-white p-4 rounded border border-gray-200 h-[400px] overflow-y-auto">
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Simplified Text</h3>
+                  <div className="bg-card p-4 rounded border border-border h-[400px] overflow-y-auto">
                     <div className="whitespace-pre-wrap text-sm leading-relaxed">{simplifiedText}</div>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <div className="inline-flex items-center text-xs bg-legal-secondary px-2 py-1 rounded text-gray-600">
+                            <div className="inline-flex items-center text-xs bg-accent/10 px-2 py-1 rounded text-accent-foreground">
                               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
@@ -138,7 +138,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({
                 </div>
               ) : (
                 <div className="text-center py-10">
-                  <p className="text-gray-500">No confusing clauses identified</p>
+                  <p className="text-muted-foreground">No confusing clauses identified</p>
                 </div>
               )}
             </TabsContent>
@@ -154,14 +154,14 @@ const ResultsView: React.FC<ResultsViewProps> = ({
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                         </div>
-                        <p className="text-gray-800">{question}</p>
+                        <p className="text-foreground">{question}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
                 <div className="text-center py-10">
-                  <p className="text-gray-500">No suggested questions available</p>
+                  <p className="text-muted-foreground">No suggested questions available</p>
                 </div>
               )}
             </TabsContent>

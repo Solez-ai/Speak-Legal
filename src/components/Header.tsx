@@ -1,15 +1,20 @@
+
 import React from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import AboutDialog from './AboutDialog';
+import ThemeSwitcher from './ThemeSwitcher';
+
 interface HeaderProps {
   activeView: string;
   setActiveView: (view: string) => void;
 }
+
 const Header: React.FC<HeaderProps> = ({
   activeView,
   setActiveView
 }) => {
-  return <header className="w-full bg-white border-b border-gray-200 shadow-sm">
+  return (
+    <header className="w-full bg-card border-b border-border shadow-sm transition-colors">
       <div className="container mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-center">
         <div className="flex items-center mb-4 md:mb-0">
           <div className="text-legal-primary mr-2">
@@ -20,13 +25,14 @@ const Header: React.FC<HeaderProps> = ({
           <div className="flex flex-col">
             <div className="flex items-center">
               <h1 className="text-2xl font-bold text-legal-primary">SpeakLegal</h1>
-              <span className="ml-2 text-sm text-legal-accent bg-legal-secondary px-2 py-0.5 rounded">AI</span>
+              <span className="ml-2 text-sm text-accent-foreground bg-accent/20 px-2 py-0.5 rounded">AI</span>
             </div>
-            <span className="text-xs text-gray-500">Powered by Typescript</span>
+            <span className="text-xs text-muted-foreground">Powered by Typescript</span>
           </div>
         </div>
         
         <div className="flex items-center gap-4">
+          <ThemeSwitcher />
           <ToggleGroup type="single" value={activeView} onValueChange={value => value && setActiveView(value)}>
             <ToggleGroupItem value="upload" className="px-4">
               <span className="mr-2">📄</span> Upload
@@ -39,6 +45,8 @@ const Header: React.FC<HeaderProps> = ({
           <AboutDialog />
         </div>
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Header;

@@ -43,7 +43,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-background transition-colors">
       <Header activeView={activeView} setActiveView={setActiveView} />
       
       <main className="flex-grow">
@@ -66,10 +66,10 @@ const Index = () => {
         )}
       </main>
       
-      <footer className="bg-white border-t border-gray-200 py-4">
+      <footer className="bg-card border-t border-border py-4 transition-colors">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-2 md:mb-0">
-            <span className="text-sm text-gray-500">© {new Date().getFullYear()} SpeakLegal</span>
+            <span className="text-sm text-muted-foreground">© {new Date().getFullYear()} SpeakLegal</span>
           </div>
           <div className="flex items-center space-x-4">
             <LegalGlossary />

@@ -64,13 +64,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				legal: {
-					primary: '#1e3a8a',    // deep navy blue
-					secondary: '#f3f4f6',  // light gray
-					accent: '#3b82f6',     // bright blue
-					success: '#10b981',    // green
-					warning: '#f59e0b',    // amber
-					danger: '#ef4444',     // red
-					highlight: '#fef9c3'   // light yellow highlight
+					primary: '#3F51B5',    // Indigo Blue (brand color)
+					secondary: '#F9F9FC',  // Soft Gray (light mode background)
+					accent: '#3F51B5',     // Same as primary for consistency
+					success: '#388E3C',    // Forest Green
+					warning: '#D32F2F',    // Crimson Red
+					danger: '#D32F2F',     // Crimson Red
+					highlight: '#E0E0E0'   // Light Silver
 				}
 			},
 			borderRadius: {
