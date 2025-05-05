@@ -75,7 +75,7 @@ const UploadForm: React.FC<UploadFormProps> = ({
             </Tabs>
 
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <Button variant="outline" size="sm" onClick={() => setShowApiKeyInput(true)} className="mb-4 md:mb-0 bg-[#ff0000] text-gray-50">!</Button>
+              <Button variant="outline" size="sm" onClick={() => setShowApiKeyInput(true)} className="mb-4 md:mb-0 text-gray-50 bg-[#ff0000]/[0.71]">!</Button>
               
               <Button onClick={handleSubmit} disabled={isLoading || fileProcessing || !textInput.trim()} className="bg-legal-primary hover:bg-legal-primary/90">
                 {isLoading ? <>
