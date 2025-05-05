@@ -1,18 +1,11 @@
-
 import React from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-
 const TermsOfUseDialog = () => {
   const [open, setOpen] = React.useState(false);
-
-  return (
-    <Dialog open={open} onOpenChange={setOpen}>
+  return <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button 
-          className="text-sm text-legal-primary hover:text-legal-accent"
-          onClick={() => setOpen(true)}
-        >
+        <button className="text-sm text-legal-primary hover:text-legal-accent" onClick={() => setOpen(true)}>
           Terms of Use
         </button>
       </DialogTrigger>
@@ -78,14 +71,12 @@ const TermsOfUseDialog = () => {
             </div>
             
             <div>
-              <h3 className="font-bold text-legal-primary">7. Governing Law</h3>
-              <p className="text-foreground dark:text-foreground mt-2">
-                These Terms will be governed by and interpreted in accordance with the laws of [Your Country/State]. Any disputes will be resolved in the appropriate courts within that jurisdiction.
-              </p>
+              
+              
             </div>
             
             <div>
-              <h3 className="font-bold text-legal-primary">8. Contact Us</h3>
+              <h3 className="font-bold text-legal-primary">7. Contact Us</h3>
               <p className="text-foreground dark:text-foreground mt-2">
                 For any questions or concerns about these Terms, please contact us at:
                 <br />
@@ -99,8 +90,6 @@ const TermsOfUseDialog = () => {
           </div>
         </ScrollArea>
       </DialogContent>
-    </Dialog>
-  );
+    </Dialog>;
 };
-
 export default TermsOfUseDialog;
