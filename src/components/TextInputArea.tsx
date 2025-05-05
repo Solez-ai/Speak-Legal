@@ -11,7 +11,7 @@ const TextInputArea: React.FC<TextInputAreaProps> = ({ textInput, onTextChange }
   return (
     <Textarea
       placeholder="Paste your legal text here..."
-      className="min-h-[300px] mb-6"
+      className="min-h-[300px] mb-6 transition-all duration-300 border-border focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
       value={textInput}
       onChange={onTextChange}
     />

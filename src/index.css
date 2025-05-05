@@ -38,7 +38,7 @@
   }
 
   .dark {
-    /* Dark mode variables */
+    /* Dark mode variables - Fixed text colors for better visibility */
     --background: 240 3% 7%; /* Deep Charcoal: #121212 */
     --foreground: 0 0% 96%; /* Light Gray: #F5F5F5 */
 
@@ -89,5 +89,77 @@
 
   .question-item {
     @apply bg-card p-4 rounded-lg border border-border shadow-sm mb-3 hover:shadow-md transition-shadow;
+  }
+  
+  /* New animations and modern UI components */
+  .fade-in {
+    @apply opacity-0 animate-fade-in;
+  }
+  
+  .slide-in {
+    @apply translate-y-4 opacity-0 animate-slide-in;
+  }
+  
+  .btn-modern {
+    @apply relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 active:scale-95;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-opacity {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.5s ease-out forwards;
+  }
+  
+  .animate-pulse-opacity {
+    animation: pulse-opacity 1.5s ease-in-out infinite;
+  }
+  
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+  
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+  
+  .stagger-3 {
+    animation-delay: 0.3s;
   }
 }

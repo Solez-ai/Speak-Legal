@@ -51,21 +51,31 @@ const ResultsView: React.FC<ResultsViewProps> = ({
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8">
-      <div className="bg-card rounded-lg shadow-md border border-border transition-colors">
+      <div className="bg-card rounded-lg shadow-md border border-border transition-colors slide-in card-hover">
         <div className="p-6 border-b border-border">
-          <div className="flex justify-between items-start mb-4">
-            <div>
+          <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
+            <div className="fade-in">
               <h2 className="text-2xl font-semibold text-legal-primary">{documentName}</h2>
               <p className="text-muted-foreground text-sm">Simplified document results</p>
             </div>
-            <div className="flex space-x-2">
-              <Button variant="outline" size="sm" onClick={handleExport}>
+            <div className="flex space-x-2 self-end md:self-start fade-in stagger-1">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleExport}
+                className="rounded-full btn-modern"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
                 Export
               </Button>
-              <Button variant="ghost" size="sm" onClick={onReset}>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={onReset}
+                className="rounded-full btn-modern"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
                 </svg>
@@ -74,10 +84,10 @@ const ResultsView: React.FC<ResultsViewProps> = ({
             </div>
           </div>
           
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid grid-cols-3">
-              <TabsTrigger value="simplified">Simplified Text</TabsTrigger>
-              <TabsTrigger value="confusing">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="fade-in stagger-2">
+            <TabsList className="grid grid-cols-3 rounded-full">
+              <TabsTrigger value="simplified" className="rounded-l-full">Simplified Text</TabsTrigger>
+              <TabsTrigger value="confusing" className="border-x border-border/30">
                 Confusing Clauses
                 {confusingClauses.length > 0 && (
                   <span className="ml-2 bg-legal-accent/20 text-accent-foreground text-xs py-0.5 px-2 rounded-full">
@@ -85,7 +95,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({
                   </span>
                 )}
               </TabsTrigger>
-              <TabsTrigger value="questions">
+              <TabsTrigger value="questions" className="rounded-r-full">
                 Questions
                 {suggestedQuestions.length > 0 && (
                   <span className="ml-2 bg-legal-accent/20 text-accent-foreground text-xs py-0.5 px-2 rounded-full">
@@ -95,33 +105,33 @@ const ResultsView: React.FC<ResultsViewProps> = ({
               </TabsTrigger>
             </TabsList>
             
-            <TabsContent value="simplified" className="mt-4">
+            <TabsContent value="simplified" className="mt-6 fade-in">
               <div className="grid md:grid-cols-2 gap-6">
-                <div>
+                <div className="card-hover">
                   <h3 className="text-sm font-medium text-muted-foreground mb-2">Original Text</h3>
-                  <div className="bg-muted/30 p-4 rounded border border-border h-[400px] overflow-y-auto">
+                  <div className="bg-muted/30 p-4 rounded-lg border border-border h-[400px] overflow-y-auto shadow-sm">
                     <pre className="whitespace-pre-wrap text-sm">{originalText}</pre>
                   </div>
                 </div>
-                <div>
+                <div className="card-hover">
                   <h3 className="text-sm font-medium text-muted-foreground mb-2">Simplified Text</h3>
-                  <div className="bg-card p-4 rounded border border-border h-[400px] overflow-y-auto">
+                  <div className="bg-card p-4 rounded-lg border border-border h-[400px] overflow-y-auto shadow-sm">
                     <div className="whitespace-pre-wrap text-sm leading-relaxed">{simplifiedText}</div>
                   </div>
                 </div>
               </div>
             </TabsContent>
             
-            <TabsContent value="confusing" className="mt-4">
+            <TabsContent value="confusing" className="mt-6 fade-in">
               {confusingClauses.length > 0 ? (
                 <div className="space-y-4">
                   {confusingClauses.map((clause, index) => (
-                    <div key={index} className="confusing-clause">
+                    <div key={index} className="confusing-clause card-hover">
                       <p className="font-medium mb-2">{clause.text}</p>
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <div className="inline-flex items-center text-xs bg-accent/10 px-2 py-1 rounded text-accent-foreground">
+                            <div className="inline-flex items-center text-xs bg-accent/10 px-2 py-1 rounded-full text-accent-foreground transition-all hover:bg-accent/20">
                               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
@@ -137,17 +147,17 @@ const ResultsView: React.FC<ResultsViewProps> = ({
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-10">
+                <div className="text-center py-10 fade-in">
                   <p className="text-muted-foreground">No confusing clauses identified</p>
                 </div>
               )}
             </TabsContent>
             
-            <TabsContent value="questions" className="mt-4">
+            <TabsContent value="questions" className="mt-6 fade-in">
               {suggestedQuestions.length > 0 ? (
-                <div className="space-y-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {suggestedQuestions.map((question, index) => (
-                    <div key={index} className="question-item">
+                    <div key={index} className="question-item card-hover">
                       <div className="flex items-start">
                         <div className="mr-3 mt-0.5 text-legal-accent">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -160,7 +170,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-10">
+                <div className="text-center py-10 fade-in">
                   <p className="text-muted-foreground">No suggested questions available</p>
                 </div>
               )}

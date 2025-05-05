@@ -62,7 +62,7 @@ const UploadForm: React.FC<UploadFormProps> = ({
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-10">
-      <div className="bg-card rounded-lg shadow-md p-6 border border-border transition-colors">
+      <div className="bg-card rounded-lg shadow-md p-6 border border-border transition-colors slide-in card-hover">
         <h2 className="text-2xl font-semibold mb-6 text-legal-primary">Simplify Your Legal Document</h2>
         
         {showApiKeyInput ? (
@@ -70,24 +70,35 @@ const UploadForm: React.FC<UploadFormProps> = ({
         ) : (
           <>
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid grid-cols-2 mb-6">
-                <TabsTrigger value="paste">Paste Text</TabsTrigger>
-                <TabsTrigger value="upload">Upload File</TabsTrigger>
+              <TabsList className="grid grid-cols-2 mb-6 rounded-full">
+                <TabsTrigger value="paste" className="rounded-l-full">Paste Text</TabsTrigger>
+                <TabsTrigger value="upload" className="rounded-r-full">Upload File</TabsTrigger>
               </TabsList>
 
-              <TabsContent value="paste" className="mt-0">
+              <TabsContent value="paste" className="mt-0 fade-in">
                 <TextInputArea textInput={textInput} onTextChange={handleTextInputChange} />
               </TabsContent>
 
-              <TabsContent value="upload" className="mt-0">
+              <TabsContent value="upload" className="mt-0 fade-in">
                 <FileUploadArea textInput={textInput} setTextInput={setTextInput} fileName={fileName} setFileName={setFileName} fileProcessing={fileProcessing} setFileProcessing={setFileProcessing} />
               </TabsContent>
             </Tabs>
 
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <Button variant="outline" size="sm" onClick={() => setShowApiKeyInput(true)} className="mb-4 md:mb-0 text-destructive-foreground bg-destructive/40 hover:bg-destructive/50 border-destructive/20">!</Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => setShowApiKeyInput(true)} 
+                className="mb-4 md:mb-0 text-destructive-foreground bg-destructive/40 hover:bg-destructive/50 border-destructive/20 rounded-full transition-all"
+              >
+                !
+              </Button>
               
-              <Button onClick={handleSubmit} disabled={isLoading || fileProcessing || !textInput.trim()} className="bg-legal-primary hover:bg-legal-primary/90">
+              <Button 
+                onClick={handleSubmit} 
+                disabled={isLoading || fileProcessing || !textInput.trim()} 
+                className="bg-legal-primary hover:bg-legal-primary/90 rounded-full btn-modern"
+              >
                 {isLoading ? (
                   <>
                     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -103,7 +114,7 @@ const UploadForm: React.FC<UploadFormProps> = ({
         )}
       </div>
       
-      <div className="mt-8 text-center text-muted-foreground text-sm">
+      <div className="mt-8 text-center text-muted-foreground text-sm slide-in stagger-2">
         <p>We respect your privacy. Your document is processed securely and is not stored permanently.</p>
       </div>
     </div>
