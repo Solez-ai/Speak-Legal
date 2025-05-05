@@ -4,6 +4,8 @@ import Header from '@/components/Header';
 import UploadForm from '@/components/UploadForm';
 import ResultsView from '@/components/ResultsView';
 import LegalGlossary from '@/components/LegalGlossary';
+import PrivacyPolicyDialog from '@/components/PrivacyPolicyDialog';
+import TermsOfUseDialog from '@/components/TermsOfUseDialog';
 import { processDocument, ProcessedDocument } from '@/services/documentService';
 import { toast } from 'sonner';
 
@@ -73,8 +75,8 @@ const Index = () => {
           </div>
           <div className="flex items-center space-x-4">
             <LegalGlossary />
-            <a href="#" className="text-sm text-legal-primary hover:text-legal-accent">Privacy Policy</a>
-            <a href="#" className="text-sm text-legal-primary hover:text-legal-accent">Terms of Use</a>
+            <PrivacyPolicyDialog />
+            <TermsOfUseDialog />
           </div>
         </div>
       </footer>
