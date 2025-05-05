@@ -71,8 +71,7 @@ const AboutDialog = () => {
               <Card>
                 <CardHeader>
                   <CardTitle>Md Adil Al Alim Cishti</CardTitle>
-                  <CardDescription>class 10 | GLAB
-                </CardDescription>
+                  <CardDescription>Class 10 | GLAB</CardDescription>
                 </CardHeader>
                 <CardFooter>
                   <div className="flex items-center text-sm text-gray-500">
