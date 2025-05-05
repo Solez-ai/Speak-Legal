@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -26,6 +25,8 @@ const UploadForm: React.FC<UploadFormProps> = ({ onProcessDocument, isLoading })
     const existingKey = getGeminiApiKey();
     if (existingKey) {
       setApiKey(existingKey);
+      // Since we now have a default API key, let's not show the input by default
+      setShowApiKeyInput(false);
     } else {
       // Check if API key is saved in localStorage
       const savedKey = localStorage.getItem('gemini_api_key');
