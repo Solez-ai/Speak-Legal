@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 // Initialize the Gemini API
 // In a production app, this would come from environment variables
 // For demo purposes, we're using a temporary input approach
-let apiKey = 'AIzaSyB96FFOY6Q_huj-jcii0eH6CQf7Ni9RhTE'; // Pre-filled API key
+let apiKey = 'AIzaSyBLONBpL_-ruOcBOUnDMGB3-4b8VDRLo8Q'; // Updated API key
 
 export const setGeminiApiKey = (key: string) => {
   apiKey = key;
