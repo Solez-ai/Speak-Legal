@@ -77,7 +77,7 @@ const AboutDialog = () => {
                 <CardFooter>
                   <div className="flex items-center text-sm text-foreground/70 dark:text-foreground/80">
                     <Mail className="h-4 w-4 mr-2" />
-                    sheditzofficial918@gmail.com
+                    adilalalim2008@gmail.com
                   </div>
                 </CardFooter>
               </Card>
