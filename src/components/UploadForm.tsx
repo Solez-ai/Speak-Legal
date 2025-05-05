@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { setGeminiApiKey, getGeminiApiKey, isGeminiApiKeySet } from '@/services/geminiService';
+import { extractTextFromWordDocument, getFileTypeDescription } from '@/services/documentExtractorService';
 
 interface UploadFormProps {
   onProcessDocument: (text: string, documentName: string) => void;
@@ -18,6 +19,7 @@ const UploadForm: React.FC<UploadFormProps> = ({ onProcessDocument, isLoading })
   const [activeTab, setActiveTab] = useState('paste');
   const [apiKey, setApiKey] = useState('');
   const [showApiKeyInput, setShowApiKeyInput] = useState(false);
+  const [fileProcessing, setFileProcessing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Check if API key is already set on component mount
@@ -71,32 +73,67 @@ const UploadForm: React.FC<UploadFormProps> = ({ onProcessDocument, isLoading })
     handleFileUpload(file);
   };
 
-  const handleFileUpload = (file?: File) => {
+  const handleFileUpload = async (file?: File) => {
     if (!file) return;
 
-    // Check file type (simplified validation)
-    const allowedTypes = ['text/plain', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    // Check file type (validation)
+    const allowedTypes = [
+      'text/plain', 
+      'application/pdf', 
+      'application/msword', 
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ];
     
     if (!allowedTypes.includes(file.type)) {
       toast.error('Only TXT, PDF, DOC, and DOCX files are supported');
       return;
     }
 
-    // For this prototype, we're just handling text files
-    // In a real app, we would need to use libraries to extract text from PDF/DOC
-    if (file.type === 'text/plain') {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const content = e.target?.result as string;
-        setTextInput(content || '');
-        setFileName(file.name);
-      };
-      reader.readAsText(file);
-    } else {
-      // In a real app, this would be where you'd handle PDFs and DOCs
-      // For now, we'll just set the filename and show a placeholder message
-      setFileName(file.name);
-      setTextInput(`[This is where the extracted content from ${file.name} would appear in a production app]`);
+    setFileProcessing(true);
+    setFileName(file.name);
+    
+    try {
+      // Handle different file types
+      if (file.type === 'text/plain') {
+        // Handle text files
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const content = e.target?.result as string;
+          setTextInput(content || '');
+          setFileProcessing(false);
+        };
+        reader.onerror = () => {
+          toast.error('Error reading the text file');
+          setFileProcessing(false);
+        };
+        reader.readAsText(file);
+      } 
+      else if (file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || 
+               file.type === 'application/msword') {
+        // Handle Word documents (.doc and .docx)
+        const result = await extractTextFromWordDocument(file);
+        
+        if (result.success) {
+          setTextInput(result.text);
+          toast.success(`Successfully extracted text from ${getFileTypeDescription(file.type)} file`);
+        } else {
+          toast.error(result.errorMessage || 'Failed to extract text from document');
+          // Keep the filename but show error
+        }
+        
+        setFileProcessing(false);
+      } 
+      else if (file.type === 'application/pdf') {
+        // For PDF files (not fully implemented in this version)
+        // Show a placeholder message for now
+        setTextInput(`[PDF text extraction is in development. In production, we would extract text from "${file.name}"]`);
+        toast.info('PDF extraction is in development. Text shown is a placeholder.');
+        setFileProcessing(false);
+      }
+    } catch (error) {
+      console.error('Error processing file:', error);
+      toast.error('Error processing file. Please try again.');
+      setFileProcessing(false);
     }
 
     // Reset file input
@@ -216,14 +253,20 @@ const UploadForm: React.FC<UploadFormProps> = ({ onProcessDocument, isLoading })
                     </div>
                   )}
                 </div>
-                {fileName && (
+                
+                {fileProcessing ? (
+                  <div className="flex justify-center items-center mb-6 p-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-legal-primary"></div>
+                    <span className="ml-2 text-legal-primary">Extracting text...</span>
+                  </div>
+                ) : fileName ? (
                   <Textarea
                     placeholder="Extracted text will appear here..."
                     className="min-h-[200px] mb-6"
                     value={textInput}
                     onChange={handleTextInputChange}
                   />
-                )}
+                ) : null}
               </TabsContent>
             </Tabs>
 
@@ -239,7 +282,7 @@ const UploadForm: React.FC<UploadFormProps> = ({ onProcessDocument, isLoading })
               
               <Button 
                 onClick={handleSubmit}
-                disabled={isLoading || !textInput.trim()}
+                disabled={isLoading || fileProcessing || !textInput.trim()}
                 className="bg-legal-primary hover:bg-legal-primary/90"
               >
                 {isLoading ? (
