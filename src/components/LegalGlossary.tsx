@@ -10,67 +10,207 @@ import {
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-// Simple legal glossary data
+// Updated legal glossary data with 50 terms
 const glossaryTerms = [
   {
+    term: "Agreement",
+    definition: "A mutual understanding between parties about their rights and responsibilities. Often forms the basis of a contract."
+  },
+  {
     term: "Arbitration",
-    definition: "A process where disputes are resolved by an impartial third party instead of going to court."
+    definition: "A private method of resolving disputes outside court. An arbitrator makes a binding or non-binding decision."
   },
   {
     term: "Breach of Contract",
-    definition: "When a party fails to fulfill their obligations under a contract without a lawful excuse."
+    definition: "When one party fails to fulfill their side of a legal agreement. This can lead to legal consequences or damages."
+  },
+  {
+    term: "Case Law",
+    definition: "Law developed from past judicial decisions. It guides future rulings on similar issues."
+  },
+  {
+    term: "Civil Law",
+    definition: "Deals with disputes between individuals or organizations. Common in areas like contracts, property, and family law."
+  },
+  {
+    term: "Clause",
+    definition: "A specific section within a legal document. Each clause addresses a different point or obligation."
+  },
+  {
+    term: "Complaint",
+    definition: "The initial document filed by a plaintiff to start a lawsuit. It outlines claims and legal reasons for the case."
+  },
+  {
+    term: "Confidentiality Agreement",
+    definition: "A contract requiring parties to keep certain info private. Common in business and employment deals."
   },
   {
     term: "Consideration",
-    definition: "Something of value exchanged between parties to make a contract valid."
+    definition: "Something of value exchanged in a contract. It makes the agreement legally binding."
+  },
+  {
+    term: "Contract",
+    definition: "A written or spoken agreement that is enforceable by law. All parties must agree to its terms."
+  },
+  {
+    term: "Court Order",
+    definition: "A legal direction issued by a judge. Must be followed or legal penalties may apply."
+  },
+  {
+    term: "Damages",
+    definition: "Monetary compensation for loss or injury caused by another party. Can be actual or punitive."
   },
   {
     term: "Defendant",
-    definition: "The person against whom a lawsuit is filed or a criminal charge is brought."
+    definition: "The person or entity being sued or accused in court. Opposite of the plaintiff."
   },
   {
-    term: "Estoppel",
-    definition: "A legal principle that prevents someone from asserting something contrary to what is implied by their previous actions or statements."
+    term: "Dispute",
+    definition: "A legal disagreement between parties. It can lead to mediation, arbitration, or court."
   },
   {
-    term: "Force Majeure",
-    definition: "A clause that frees parties from obligation when extraordinary events occur that are beyond their control."
+    term: "Due Diligence",
+    definition: "A thorough review before finalizing a deal. Often used in business or property transactions."
   },
   {
-    term: "Indemnification",
-    definition: "Compensation for harm or loss; protection against legal liability."
+    term: "Enforceable",
+    definition: "Means the agreement can be upheld by a court. It meets all legal requirements."
+  },
+  {
+    term: "Fraud",
+    definition: "Deliberate deception to gain unfair benefit. It is both a civil and criminal offense."
+  },
+  {
+    term: "Indemnify",
+    definition: "To compensate someone for a loss or damage. Often used in insurance and contracts."
+  },
+  {
+    term: "Injunction",
+    definition: "A court order that requires someone to stop doing something. Violating it can result in penalties."
+  },
+  {
+    term: "Intellectual Property (IP)",
+    definition: "Legal rights over creations like inventions, art, or brand names. Includes patents, copyrights, and trademarks."
   },
   {
     term: "Jurisdiction",
-    definition: "The official power to make legal decisions and judgments in a particular area or matter."
+    definition: "A court's legal authority to hear a case. Depends on location and case type."
+  },
+  {
+    term: "Lease",
+    definition: "A contract granting temporary use of property in exchange for rent. Common for apartments or offices."
   },
   {
     term: "Liability",
-    definition: "Legal responsibility for something, especially costs or damages."
+    definition: "Legal responsibility for something, often involving damages or obligations. Can be personal or business-related."
+  },
+  {
+    term: "Litigation",
+    definition: "The process of resolving disputes through the court system. It includes filing lawsuits and going to trial."
+  },
+  {
+    term: "Mediation",
+    definition: "A voluntary dispute resolution method. A neutral mediator helps parties reach an agreement."
+  },
+  {
+    term: "Minor",
+    definition: "Someone under the age of legal adulthood. Minors usually cannot enter binding contracts."
   },
   {
     term: "Negligence",
-    definition: "Failure to exercise the care that a reasonably prudent person would exercise in similar circumstances."
+    definition: "Failure to take reasonable care, causing harm. Common in personal injury and malpractice cases."
+  },
+  {
+    term: "Non-Disclosure Agreement (NDA)",
+    definition: "A contract that restricts sharing confidential info. Common in employment or partnerships."
+  },
+  {
+    term: "Party",
+    definition: "A person or group involved in a legal agreement or case. Includes plaintiffs, defendants, and signatories."
+  },
+  {
+    term: "Patent",
+    definition: "A legal right granted for an invention. It gives exclusive use to the inventor for a certain time."
   },
   {
     term: "Plaintiff",
-    definition: "A person who brings a case against another in a court of law."
+    definition: "The person or entity who starts a lawsuit. They claim to have been wronged by the defendant."
   },
   {
-    term: "Quid Pro Quo",
-    definition: "Something given or received for something else; a favor or advantage granted in return for something."
+    term: "Power of Attorney",
+    definition: "A legal document giving someone authority to act for another. Useful in financial or health matters."
+  },
+  {
+    term: "Premises",
+    definition: "The land or property referred to in a legal agreement. Often used in leases or liability cases."
+  },
+  {
+    term: "Pro Bono",
+    definition: "Legal work done for free, often for the public good. Lawyers may offer this to low-income clients."
+  },
+  {
+    term: "Remedy",
+    definition: "The legal means of enforcing a right or fixing a wrong. Can be compensation or specific performance."
   },
   {
     term: "Rescission",
-    definition: "The cancellation of a contract, returning the parties to their positions before the contract was made."
+    definition: "Cancelling a contract and restoring all parties to their original state. Happens when there's a legal flaw."
   },
   {
-    term: "Statute of Limitations",
-    definition: "A law that sets the maximum time after an event within which legal proceedings may be initiated."
+    term: "Settlement",
+    definition: "An agreement to resolve a dispute without a trial. Usually involves a compromise by both sides."
+  },
+  {
+    term: "Statute",
+    definition: "A written law passed by a legislative body. It must be followed by all within the jurisdiction."
+  },
+  {
+    term: "Subpoena",
+    definition: "A legal order requiring someone to appear in court or provide evidence. Ignoring it can lead to penalties."
+  },
+  {
+    term: "Terms and Conditions",
+    definition: "The rules and clauses in a contract. They define each party's rights and responsibilities."
+  },
+  {
+    term: "Testimony",
+    definition: "A statement made under oath, often in court. It can be verbal or written (affidavit)."
   },
   {
     term: "Tort",
-    definition: "A wrongful act that results in injury to another's person, property, reputation, and leads to civil liability."
+    definition: "A civil wrong causing harm or loss. Includes negligence, defamation, and more."
+  },
+  {
+    term: "Trademark",
+    definition: "A symbol, name, or logo that represents a brand. Protects against unauthorized use."
+  },
+  {
+    term: "Unilateral Contract",
+    definition: "A contract where only one party makes a promise. Often seen in offers or rewards."
+  },
+  {
+    term: "Venue",
+    definition: "The location where a legal case is heard. Chosen based on convenience or law."
+  },
+  {
+    term: "Verdict",
+    definition: "The final decision by a judge or jury. It determines the outcome of a case."
+  },
+  {
+    term: "Waiver",
+    definition: "Giving up a legal right voluntarily. Must be done knowingly and clearly."
+  },
+  {
+    term: "Warranty",
+    definition: "A legal promise about the quality or durability of a product or service. Can be limited or full."
+  },
+  {
+    term: "Will",
+    definition: "A legal document stating how a person's property should be distributed after death. Must meet legal standards to be valid."
+  },
+  {
+    term: "Witness",
+    definition: "A person who saw an event or has relevant information. May testify in court under oath."
   }
 ];
 
