@@ -1,3 +1,4 @@
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Initialize the Gemini API
@@ -24,6 +25,20 @@ export const getGeminiClient = () => {
   }
   
   return new GoogleGenerativeAI(apiKey);
+};
+
+// Helper function to extract JSON from markdown code blocks if needed
+const extractJsonFromResponse = (text: string): string => {
+  // Check if response is wrapped in markdown code blocks
+  const jsonRegex = /```(?:json)?\s*([\s\S]*?)```/;
+  const match = text.match(jsonRegex);
+  
+  if (match && match[1]) {
+    return match[1].trim();
+  }
+  
+  // If no markdown code blocks, return the original text
+  return text;
 };
 
 // Function to simplify legal text
@@ -76,7 +91,7 @@ export const identifyConfusingClauses = async (text: string): Promise<Array<{tex
   2. Explain why it might be confusing to a non-lawyer
   3. Provide the approximate character position where this clause appears in the original text
   
-  Format your response exactly as follows (in valid JSON format):
+  Format your response exactly as follows (in valid JSON format - do not include code blocks, backticks, or any other markdown):
   [
     {
       "text": "the exact text of the confusing clause",
@@ -100,7 +115,9 @@ export const identifyConfusingClauses = async (text: string): Promise<Array<{tex
     const clausesText = response.text();
     
     try {
-      const parsedClauses = JSON.parse(clausesText);
+      // Extract JSON from the response if it's wrapped in markdown code blocks
+      const extractedJson = extractJsonFromResponse(clausesText);
+      const parsedClauses = JSON.parse(extractedJson);
       return parsedClauses;
     } catch (parseError) {
       console.error("Error parsing Gemini response:", parseError);
@@ -130,7 +147,7 @@ export const generateSuggestedQuestions = async (text: string): Promise<string[]
   - Be phrased in plain language that non-lawyers can understand
   - Be specific to the content of this particular document
   
-  Format your response as a JSON array of strings with just the questions:
+  Format your response as a JSON array of strings with just the questions (do not include code blocks, backticks, or any other markdown):
   ["Question 1", "Question 2", "Question 3", ...]
   
   Here's the legal document:
@@ -143,7 +160,9 @@ export const generateSuggestedQuestions = async (text: string): Promise<string[]
     const questionsText = response.text();
     
     try {
-      const parsedQuestions = JSON.parse(questionsText);
+      // Extract JSON from the response if it's wrapped in markdown code blocks
+      const extractedJson = extractJsonFromResponse(questionsText);
+      const parsedQuestions = JSON.parse(extractedJson);
       return parsedQuestions;
     } catch (parseError) {
       console.error("Error parsing Gemini response for questions:", parseError);
