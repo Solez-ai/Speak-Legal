@@ -4,10 +4,17 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 const TermsOfUseDialog = () => {
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button className="text-sm text-legal-primary hover:text-legal-accent">Terms of Use</button>
+        <button 
+          className="text-sm text-legal-primary hover:text-legal-accent"
+          onClick={() => setOpen(true)}
+        >
+          Terms of Use
+        </button>
       </DialogTrigger>
       <DialogContent className="max-w-3xl max-h-[90vh]">
         <DialogHeader>
