@@ -1,5 +1,11 @@
+// This service processes legal documents using the Gemini API
 
-// This is a mock service that simulates the processing of a legal document
+import { 
+  simplifyLegalText,
+  identifyConfusingClauses, 
+  generateSuggestedQuestions,
+  isGeminiApiKeySet 
+} from './geminiService';
 
 export interface ProcessedDocument {
   simplifiedText: string;
@@ -11,32 +17,41 @@ export interface ProcessedDocument {
   suggestedQuestions: string[];
 }
 
-// Mock API function to process document
+// API function to process document using Gemini
 export const processDocument = async (text: string): Promise<ProcessedDocument> => {
-  // Simulate API call with a delay
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  // Check if API key is set
+  if (!isGeminiApiKeySet()) {
+    return {
+      simplifiedText: "Please set your Gemini API key to process documents.",
+      confusingClauses: [],
+      suggestedQuestions: []
+    };
+  }
   
-  // This is where in a real app we'd call an actual API
-  // For now, we'll return mock data based on the input text
-  
-  // For demo purposes, let's create a simplified version
-  const simplifiedText = simplifyText(text);
-  
-  // Find some "confusing" clauses (in a real app, this would be done by an NLP model)
-  const confusingClauses = identifyConfusingClauses(text);
-  
-  // Generate some suggested questions
-  const suggestedQuestions = generateQuestions(text);
-  
-  return {
-    simplifiedText,
-    confusingClauses,
-    suggestedQuestions
-  };
+  try {
+    // Process the document with Gemini API (with artificial delay for UX)
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Run all three operations in parallel for better performance
+    const [simplifiedText, confusingClauses, suggestedQuestions] = await Promise.all([
+      simplifyLegalText(text),
+      identifyConfusingClauses(text),
+      generateSuggestedQuestions(text)
+    ]);
+    
+    return {
+      simplifiedText,
+      confusingClauses,
+      suggestedQuestions
+    };
+  } catch (error) {
+    console.error("Error processing document:", error);
+    throw new Error("Failed to process document with Gemini API");
+  }
 };
 
-// Simplified mock functions
-const simplifyText = (text: string): string => {
+// Keeping the mock functions for fallback or testing purposes
+export const simplifyTextMock = (text: string): string => {
   // For demo, we'll just make some simple replacements to simulate simplification
   // In a real app, this would use an AI language model
   
@@ -85,7 +100,7 @@ const simplifyText = (text: string): string => {
   return summary + simplified;
 };
 
-const identifyConfusingClauses = (text: string): Array<{text: string, reason: string, index: number}> => {
+export const identifyConfusingClausesMock = (text: string): Array<{text: string, reason: string, index: number}> => {
   // Mock function to identify "confusing" clauses
   // In a real app, this would be done by an NLP model
   
@@ -165,7 +180,7 @@ const identifyConfusingClauses = (text: string): Array<{text: string, reason: st
   return results;
 };
 
-const generateQuestions = (text: string): string[] => {
+export const generateQuestionsMock = (text: string): string[] => {
   // Mock function to generate questions
   // In a real app, this would be done by an AI model
   
