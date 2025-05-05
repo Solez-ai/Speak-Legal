@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import AboutDialog from './AboutDialog';
 
 interface HeaderProps {
   activeView: string;
@@ -26,14 +27,18 @@ const Header: React.FC<HeaderProps> = ({ activeView, setActiveView }) => {
           </div>
         </div>
         
-        <ToggleGroup type="single" value={activeView} onValueChange={(value) => value && setActiveView(value)}>
-          <ToggleGroupItem value="upload" className="px-4">
-            <span className="mr-2">📄</span> Upload
-          </ToggleGroupItem>
-          <ToggleGroupItem value="results" className="px-4" disabled={activeView === 'upload'}>
-            <span className="mr-2">🔎</span> Results
-          </ToggleGroupItem>
-        </ToggleGroup>
+        <div className="flex items-center gap-4">
+          <ToggleGroup type="single" value={activeView} onValueChange={(value) => value && setActiveView(value)}>
+            <ToggleGroupItem value="upload" className="px-4">
+              <span className="mr-2">📄</span> Upload
+            </ToggleGroupItem>
+            <ToggleGroupItem value="results" className="px-4" disabled={activeView === 'upload'}>
+              <span className="mr-2">🔎</span> Results
+            </ToggleGroupItem>
+          </ToggleGroup>
+          
+          <AboutDialog />
+        </div>
       </div>
     </header>
   );
