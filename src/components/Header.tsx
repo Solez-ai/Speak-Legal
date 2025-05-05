@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({
               <h1 className="text-2xl font-bold text-legal-primary">SpeakLegal</h1>
               <span className="ml-2 text-sm text-legal-accent bg-legal-secondary px-2 py-0.5 rounded">AI</span>
             </div>
-            <span className="text-xs text-gray-500">Powered by Gemini</span>
+            <span className="text-xs text-gray-500">Powered by Typescript</span>
           </div>
         </div>
         
