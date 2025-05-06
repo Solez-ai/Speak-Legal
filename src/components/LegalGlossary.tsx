@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   Dialog,
@@ -10,7 +9,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-// Updated legal glossary data with 50 terms
+// Updated legal glossary data with all terms
 const glossaryTerms = [
   {
     term: "Agreement",
@@ -211,6 +210,182 @@ const glossaryTerms = [
   {
     term: "Witness",
     definition: "A person who saw an event or has relevant information. May testify in court under oath."
+  },
+  {
+    term: "Addendum",
+    definition: "An additional document added to a contract to include new terms or corrections. It's legally binding just like the original contract."
+  },
+  {
+    term: "Adjudication",
+    definition: "The legal process of resolving a dispute or deciding a case. A judge or arbitrator usually makes the final decision."
+  },
+  {
+    term: "Affidavit",
+    definition: "A written statement made under oath. It's often used as evidence in court."
+  },
+  {
+    term: "Annulment",
+    definition: "A legal declaration that a marriage was never valid. It's different from divorce because it erases the marriage entirely."
+  },
+  {
+    term: "Appeal",
+    definition: "A request to a higher court to review a lower court's decision. Used when one party believes there was a legal error."
+  },
+  {
+    term: "Arraignment",
+    definition: "The first court appearance where a criminal defendant hears their charges. They also enter a plea (guilty, not guilty, etc.)."
+  },
+  {
+    term: "Asset Forfeiture",
+    definition: "The legal process of seizing property connected to a crime. Common in drug and fraud cases."
+  },
+  {
+    term: "Beneficiary",
+    definition: "Someone who receives money or property from a will, trust, or insurance policy. They are the named recipient."
+  },
+  {
+    term: "Bequest",
+    definition: "A gift of personal property left in a will. Commonly used to describe inheritance of items or money."
+  },
+  {
+    term: "Class Action",
+    definition: "A lawsuit filed by a group of people with similar claims. Often used for product defects or large-scale harm."
+  },
+  {
+    term: "Clemency",
+    definition: "When a government official reduces a criminal sentence. It can involve pardons, commutations, or reprieves."
+  },
+  {
+    term: "Collateral",
+    definition: "Property pledged to secure a loan. If the borrower defaults, the lender can seize the collateral."
+  },
+  {
+    term: "Common Law",
+    definition: "Law based on customs, traditions, and previous court decisions. It evolves over time through rulings."
+  },
+  {
+    term: "Compensatory Damages",
+    definition: "Money awarded to make up for actual loss or injury. It restores the victim to their original position."
+  },
+  {
+    term: "Contempt of Court",
+    definition: "Disrespecting or disobeying a court order. It can lead to fines or jail time."
+  },
+  {
+    term: "De Facto",
+    definition: "Latin for \"in fact\" — describes something that exists in reality, even if not legally recognized."
+  },
+  {
+    term: "De Jure",
+    definition: "Latin for \"by law\" — something that is legally recognized, even if it doesn't exist in practice."
+  },
+  {
+    term: "Deposition",
+    definition: "Sworn, out-of-court testimony from a witness. It's recorded and used later in court."
+  },
+  {
+    term: "Discovery",
+    definition: "The pre-trial process of exchanging evidence and information. It ensures both sides are prepared."
+  },
+  {
+    term: "Due Process",
+    definition: "Legal procedures that protect individual rights. Everyone is entitled to fair treatment under the law."
+  },
+  {
+    term: "Duress",
+    definition: "Forcing someone to act against their will using threats or pressure. Contracts signed under duress may be void."
+  },
+  {
+    term: "Emancipation",
+    definition: "When a minor is legally declared independent from their parents. It gives them adult rights and responsibilities."
+  },
+  {
+    term: "Encumbrance",
+    definition: "A legal claim or restriction on property, like a mortgage or lien. It affects ownership rights."
+  },
+  {
+    term: "Equity",
+    definition: "Justice applied according to fairness, not strict law. Often used in family or property cases."
+  },
+  {
+    term: "Escrow",
+    definition: "Money or property held by a third party until a deal is completed. Common in real estate transactions."
+  },
+  {
+    term: "Estoppel",
+    definition: "A legal rule preventing someone from going back on a promise if it caused another person harm."
+  },
+  {
+    term: "Ex Parte",
+    definition: "A court proceeding with only one party present. Usually urgent and temporary."
+  },
+  {
+    term: "Executor",
+    definition: "A person appointed to carry out the terms of a will. They manage the deceased's estate."
+  },
+  {
+    term: "Force Majeure",
+    definition: "A clause that frees both parties from liability due to unforeseeable events (like natural disasters)."
+  },
+  {
+    term: "Frivolous Lawsuit",
+    definition: "A case with no legal merit, often meant to harass or delay. Courts can penalize such claims."
+  },
+  {
+    term: "Garnishment",
+    definition: "A legal process of taking money from wages to pay a debt. Usually ordered by a court."
+  },
+  {
+    term: "Guardian ad Litem",
+    definition: "A court-appointed person who represents a child or incapacitated person's best interests during legal cases."
+  },
+  {
+    term: "Habeas Corpus",
+    definition: "A legal action demanding someone in custody be brought to court. It prevents unlawful detention."
+  },
+  {
+    term: "Heir",
+    definition: "A person entitled to receive a deceased person's property under law or a will."
+  },
+  {
+    term: "Immunity",
+    definition: "Protection from legal action, often granted to witnesses in exchange for testimony."
+  },
+  {
+    term: "Indemnity",
+    definition: "An agreement to compensate someone for loss or damage. Common in insurance and contracts."
+  },
+  {
+    term: "Intestate",
+    definition: "Dying without a valid will. The state decides how your property is distributed."
+  },
+  {
+    term: "Joinder",
+    definition: "Combining multiple parties or claims into one lawsuit. It saves time and court resources."
+  },
+  {
+    term: "Laches",
+    definition: "Failure to assert a legal right in a timely manner. It can weaken or invalidate your claim."
+  },
+  {
+    term: "Levy",
+    definition: "A legal seizure of property to satisfy a tax debt or court judgment."
+  },
+  {
+    term: "Libel",
+    definition: "A false written statement that harms someone's reputation. It's a form of defamation."
+  },
+  {
+    term: "Mitigation",
+    definition: "Taking steps to reduce harm or loss. In law, victims must try to limit damages."
+  },
+  {
+    term: "Notary Public",
+    definition: "An official who witnesses document signing and verifies identity. Adds legal credibility to signatures."
+  },
+  {
+    term: "Parole",
+    definition: "Early release from prison under certain conditions. Violating parole can lead to re-incarceration."
   }
 ];
 
