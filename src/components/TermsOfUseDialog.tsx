@@ -20,7 +20,7 @@ const TermsOfUseDialog = () => {
         <ScrollArea className="max-h-[70vh] pr-4">
           <div className="space-y-4 py-4">
             <p className="text-foreground dark:text-foreground">
-              Welcome to SpeakLegal! These Terms of Use ("Terms") govern your access to and use of the SpeakLegal mobile application and services ("App"). By using SpeakLegal, you agree to comply with and be bound by these Terms. If you do not agree, please discontinue use of the App.
+              Welcome to SpeakLegal! These Terms of Use govern your access to and use of the SpeakLegal mobile application and services. By using SpeakLegal, you agree to comply with and be bound by these Terms. If you do not agree, please discontinue use of the App.
             </p>
             
             <div>
